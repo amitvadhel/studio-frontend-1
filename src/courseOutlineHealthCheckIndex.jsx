@@ -11,19 +11,18 @@ import './SFE.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { addLocaleData, IntlProvider } from 'react-intl';
+import { IntlProvider } from 'react-intl';
 import enLocaleData from 'react-intl/locale-data/en';
 
 import WrappedCourseOutlineStatus from './components/CourseOutlineStatus/container';
 import store from './data/store';
+import loadI18nDomData from './utils/i18n/loadI18nDomData';
 /* eslint-enable import/first */
 
-const locale = 'en';
-const messages = {};
-addLocaleData(enLocaleData);
+const i18nData = loadI18nDomData();
 
 const CourseHealthCheckApp = () => (
-  <IntlProvider locale={locale} messages={messages}>
+  <IntlProvider locale={i18nData.locale} messages={i18nData.messages}>
     <Provider store={store}>
       <div className="SFE-wrapper">
         <WrappedCourseOutlineStatus />
